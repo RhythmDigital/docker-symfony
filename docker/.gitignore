@@ -1,0 +1,6 @@
+/mysql/data/*
+!mysql/data/.gitkeep
+/nginx/log/*
+!nginx/log/.gitkeep
+/php/log/*
+!php/log/.gitkeep
