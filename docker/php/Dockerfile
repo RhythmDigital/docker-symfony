@@ -17,6 +17,7 @@ RUN pecl install xdebug-2.5.4 \
 #    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
 
 RUN apt-get update
+RUN apt-get install -y git zip unzip
 RUN apt-get install -y pkg-config
 RUN apt-get install -y libmemcached-dev zlib1g-dev
 RUN pecl install memcached-3.0.3
