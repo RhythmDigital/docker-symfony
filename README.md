@@ -1,12 +1,32 @@
-# Installation
+# Isolated Symfony 3.2 environment
+
+Application image is built with multiple Docker containers.
+
+Containers:
+
+* Nginx
+* PHP
+* MySQL
+
+Tools:
+
+* Composer
+* Bower
+* Grunt
+
+# Build the project
 
 ## Git
+
+Checkout Git repository:
 
 ```
 $ git clone https://github.com/zoeller/docker-symfony.git
 ```
 
 ## Docker
+
+Pull needed images and start the containers:
 
 ```
 $ sudo docker-compose up --build
@@ -19,11 +39,25 @@ $ sudo docker-compose build
 $ sudo docker-compose up
 ```
 
+or
+
+```
+$ sudo docker-compose build
+$ sudo docker-compose up
+```
+
 ## Parameters
+
+Setup Symfony parameters:
 
 Copy ```app/config/parameters.yml.dist``` to ```app/config/parameters.yml``` and edit the parameters in there.
 
-Alternatively enter parameters later during ```composer install```.
+```
+$ cp app/config/parameters.yml.dist app/config/parameters.yml
+$ vim app/config/parameters.yml
+```
+
+Or alternatively enter parameters later during ```composer install```.
 
 ```
 Creating the "app/config/parameters.yml" file
@@ -70,10 +104,25 @@ http://localhost:8086
 ```
 
 ## Docker containers
+
 ```
 $ sudo docker-compose exec php bash
 $ sudo docker-compose exec mysql bash
 $ sudo docker-compose exec nginx bash
+```
+
+# Useful commands
+
+```
+$ sudo docker rm $(sudo docker ps -aq)
+$ sudo docker rmi $(sudo docker images -q)
+```
+
+## Shutdown/Clean up
+
+```
+$ sudo docker-compose down
+$ sudo docker-compose down --volumes
 ```
 
 # Links
@@ -85,4 +134,3 @@ $ sudo docker-compose exec nginx bash
 * https://hub.docker.com/r/mroca/symfony-dev/
 * https://devhub.io/repos/sskorc-docker-symfony
 * https://github.com/sskorc/docker-symfony
-
