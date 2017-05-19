@@ -1,8 +1,17 @@
-# Docker
+# Installation
+
+## Git
+
+```
+$ git clone https://github.com/zoeller/docker-symfony.git
+```
+
+## Docker
 
 ```
 $ sudo docker-compose up --build
 ```
+
 or
 
 ```
@@ -10,13 +19,11 @@ $ sudo docker-compose build
 $ sudo docker-compose up
 ```
 
-# Vendors
-
-```
-$ sudo docker-compose exec php composer install
-```
-
 ## Parameters
+
+Copy ```app/config/parameters.yml.dist``` to ```app/config/parameters.yml``` and edit the parameters in there.
+
+Alternatively enter parameters later during ```composer install```.
 
 ```
 Creating the "app/config/parameters.yml" file
@@ -33,15 +40,40 @@ mailer_password (null):
 secret (ThisTokenIsNotSoSecretChangeIt): 
 ```
 
-# Access
+## Vendors and Tools
+
+Run
 
 ```
-$ sudo docker-compose exec nginx bash
-$ sudo docker-compose exec php bash
+$ sudo docker-compose exec php bash dev/init_php.sh
 ```
+
+or each command separately:
+
+```
+$ sudo docker-compose exec php composer install
+$ sudo docker-compose exec php npm install -g bower
+$ sudo docker-compose exec php npm install -g grunt-cli
+$ sudo docker-compose exec php bower install --allow-root
+$ sudo docker-compose exec php npm install
+$ sudo docker-compose exec php grunt
+$ sudo docker-compose exec php chown -R www-root:1000 web/_static
+```
+
+# Access
+
+## Symfony default page
+
 
 ```
 http://localhost:8086
+```
+
+## Docker containers
+```
+$ sudo docker-compose exec php bash
+$ sudo docker-compose exec mysql bash
+$ sudo docker-compose exec nginx bash
 ```
 
 # Links
