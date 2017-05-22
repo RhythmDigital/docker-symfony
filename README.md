@@ -182,3 +182,4 @@ $ sudo docker kill $(sudo docker ps -qa)
 * https://devhub.io/repos/sskorc-docker-symfony
 * https://github.com/sskorc/docker-symfony
 * https://github.com/kbond/symfony-grunt-edition
+* https://sandro-keil.de/blog/2015/10/05/docker-php-xdebug-cli-debugging/

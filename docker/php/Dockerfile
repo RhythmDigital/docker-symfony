@@ -9,6 +9,7 @@ ENV MEMCACHED_VERSION 3.0.3
 
 RUN docker-php-ext-enable opcache
 
+RUN pecl channel-update pecl.php.net
 RUN pecl install "xdebug-${XDEBUG_VERSION}"
 RUN docker-php-ext-enable xdebug \
     && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
