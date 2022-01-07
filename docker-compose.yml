@@ -3,6 +3,7 @@ version: '2'
 services:
 
   mysql:
+    platform: linux/x86_64
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: pass
@@ -16,6 +17,7 @@ services:
 #    image: redis:latest
 
   php:
+    platform: linux/x86_64
     build: ./docker/php
     environment:
       XDEBUG_CONFIG: "remote_host=172.18.0.1"
@@ -29,6 +31,7 @@ services:
 #      - redis
 
   nginx:
+    platform: linux/x86_64
     build: ./docker/nginx
     ports:
       - 8086:80
